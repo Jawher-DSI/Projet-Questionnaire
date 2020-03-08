@@ -1,0 +1,40 @@
+
+
+
+.ques{
+    margin-right:4px;
+    margin-left: 25px;
+    padding:0px !important;
+    margin-top: 10px;
+
+}
+.quess{
+    margin-top: 55px;
+    margin-left: 20px;
+    padding:0px !important;
+    font-size:150px;
+    width:238px;
+    height: 300px;
+    text-align: center;
+}
+
+.fa-plus{
+    color:#46aff562;
+    margin-left:40px;
+    align-items: center;
+
+    margin: 50px;
+
+}
+.ajout{
+    width:238px !important;
+}
+.fa-close{
+    color:#CC0000;
+}
+.card{
+    border-color: #d9e0e4;
+}
+img{
+    width: 14rem;
+}

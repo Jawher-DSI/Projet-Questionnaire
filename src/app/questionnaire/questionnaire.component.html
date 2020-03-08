@@ -1,0 +1,107 @@
+<app-navigation></app-navigation>
+<div class="container-fluid">
+<div class="container card "style="padding:20px;margin-bottom:20px;">
+    <div class="questionnaire container">
+        <form [formGroup]="questionnaire" (ngSubmit)="onSubmit(questionnaire.value)">
+            <h6 class="text-center text-primary ">Questionnaire</h6> <br>
+            <div class="form-group row">
+                <label for="nomquest" class=" text-primary col-sm-1 col-form-label">Nom </label>
+                <div class="col-sm-7">
+                    <input id="nomquest" class="form-control" type="text" placeholder="Saisir le nom du Questionnaire" formControlName="questionnaireName">
+                </div>
+            </div><br>
+            <div  *ngIf="questionnaire.controls['questionnaireName'].invalid && (questionnaire.controls['questionnaireName'].dirty || questionnaire.controls['questionnaireName'].touched)">       
+                <div class="alert alert-danger"  role="alert">
+                   <h6 class="text-center"> Nom !!</h6>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="typequest" class=" text-primary col-sm-1 col-form-label">Type </label>
+                <div class="col-sm-7">    
+                    <select name="type" class="form-control" id="typequest" formControlName="typeques">
+                        <option selected>--  Choisir un Type  -- </option>
+                        <option> Questionnaire Testeur </option>
+                        <option> Questionnaire D'inscription </option>
+                        <option> Questionnaire De vote </option>
+                    </select>
+                </div>
+            </div><br>
+            <div  *ngIf="questionnaire.controls['questionnaireName'].invalid && (questionnaire.controls['questionnaireName'].dirty || questionnaire.controls['questionnaireName'].touched)">       
+                <div class="alert alert-danger"  role="alert">
+                   <h6 class="text-center"> Type !!</h6>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <ng-container formArrayName="section">
+                    <div [formGroupName]="i" *ngFor="let ques of questionnaire.get('section').controls;let i = index;">
+                        <div class=" card "style="padding:20px; margin-bottom:20px;">
+                            <h6 class="text-center text-primary" >Produit</h6> <br>
+                            <div class="form-group row">
+                                <label for="nomprod"  class=" text-primary col-sm-1 col-form-label">Nom</label>
+                                <div class="col-sm-7">
+                                    <input id="nomprod" class="form-control" placeholder="Saisir le nom du Produit" formControlName="sectionName" type="text">                        
+                                </div>
+                                <button type="button" class="dell" (click)="removeSection(i)"><i class="fa fa-times-circle del"></i></button>
+                                <button class="btn btn-outline-primary" type="button" (click)="addQuestion(ques)">Ajouter Question</button>
+                            </div>
+                            <div style="height:40px;" *ngIf="ques.controls['sectionName'].invalid && (ques.controls['sectionName'].dirty || ques.controls['sectionName'].touched)">
+                                <div class="alert alert-danger" role="alert">
+                                    <h6 class="text-center"> Produit !!</h6>
+                                </div>
+                            </div><br>
+                            <div class="container ">
+                                <ng-container formArrayName="question">
+                        
+                                    <div [formGroupName]="j" *ngFor="let sec of ques.get('question').controls;let j=index;">
+                                        <div class="form-group row">
+                                            <div class="col-sm-6">
+                                                <input class="form-control" placeholder="Saisir la Question" formControlName="questionName" type="text">                          
+                                            </div>
+                                            <select class="custom-select custom-select-sm col-sm-2" style="margin-left: 30px;" formControlName="type">
+                                                <option value="checkbox">Checkbox</option>
+                                                <option value="radio">Radio</option>
+                                            </select>
+                                            <button class="dell" type="button" (click)="removeQuestion(ques,j)"><i class="fa fa-times-circle del"></i></button>
+                                            <button class="btn btn-outline-primary" type="button" (click)="addAnswer(sec)">Ajouter Réponse</button>
+                                        </div>
+                                    <div style="height:40px;" *ngIf="sec.controls['questionName'].invalid && (sec.controls['questionName'].dirty || sec.controls['questionName'].touched)">
+                                        <div class="alert alert-danger" role="alert">
+                                            <h6 class="text-center"> Question !!</h6>
+                                        </div>
+                                    </div><br>
+                                    <div class="container">
+                                        <ng-container formArrayName="answer">
+                                            <div [formGroupName]="k" *ngFor="let ans of sec.get('answer').controls;let k=index;">
+                                                <div class="form-group row">
+                                                    <div class="col-sm-5">
+                                                        <input class="form-control" placeholder="Saisir la Réponse" formControlName ="answerName" type="text">
+                                                    </div>
+                                                    <button class="dell" type="button" (click)="removeAnswer(sec,k)"><i class="fa fa-times-circle del"></i></button>
+                                                </div>
+                                                <div style="height:40px;" *ngIf="ans.controls['answerName'].invalid && (ans.controls['answerName'].dirty || ans.controls['answerName'].touched)" >
+                                                    <div class="alert alert-danger" role="alert">
+                                                        <h6 class="text-center"> Réponse !!</h6>
+                                                    </div>
+                                                </div><br>
+                                            </div>
+                                        </ng-container>
+                                    </div>    
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </ng-container> 
+            <div class="row justify-content-center">
+                <button class="btn btn-outline-warning" type="button" (click)="addSection()">Ajouter une Section</button>
+            </div>
+        </div>
+        <br><br>
+        <button class="btn btn-outline-primary btn-block"   type="submit" [disabled]="!questionnaire.valid" > Enregister</button>
+        </form>
+    </div>
+</div>
+</div>

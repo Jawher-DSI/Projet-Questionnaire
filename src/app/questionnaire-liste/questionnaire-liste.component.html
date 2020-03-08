@@ -1,0 +1,24 @@
+<app-navigation></app-navigation>
+<br>
+<div class="container-fluid">
+    <div class="row" >
+        <div class=" bg-white  s quess">
+            <a  class="align-middle" [routerLink]="['/ajoutquestionnaire']">
+                <i class="fa fa-plus"></i>
+            </a>
+        </div>
+        <div class="text-center bg-white  ques" *ngFor="let s of ques">
+            <br>
+            <div class="card" style="width: 15rem;">
+                <a [routerLink]="['/questionnaireliste',s.id]"> <img src="../../assets/acf2e09601c2e1fda2c867ed715b5e27.gif" class="card-img" alt="I put it randomly"></a><br>
+
+                <div class="card-title">
+                    <h6>{{s.questionnaireName}}</h6>
+                    <div>
+                        <button style="margin-top: 8px;" class="btn btn-sm btn-default fa fa-close" type="button" (click)="deleteQuestionnaire(s)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

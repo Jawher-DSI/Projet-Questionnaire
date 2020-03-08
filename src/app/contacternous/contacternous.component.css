@@ -1,0 +1,15 @@
+.box
+{
+    position: fixed;
+    top:55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 750px;
+    padding: 50px;
+    background: rgba(253, 253, 253, 0.809);
+    box-sizing: border-box;
+    box-sizing: 0 25px 30px rgba(248, 248, 248, 0.8);
+}
+h5{
+    text-align: center;
+}

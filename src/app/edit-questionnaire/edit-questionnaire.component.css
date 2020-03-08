@@ -1,0 +1,15 @@
+.questionnaire{
+    margin-top: 70px;
+}
+
+.dell{
+    font-size:20px;
+    border: none;
+    background-color: #fff;
+    color:rgb(179, 9, 9);
+}
+
+.card{
+    border-color: rgba(241, 240, 240, 0.891);
+    border-radius: 15px;
+}
